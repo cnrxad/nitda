@@ -1,5 +1,5 @@
 ---
-import { Auth, SignIn } from "auth-astro/components";
+import { Auth, SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 
 const session = await getSession(Astro.request);
@@ -45,7 +45,21 @@ const session = await getSession(Astro.request);
         {
           session ? (
             <>
-              <p>{session.user?.name}</p>
+              <>
+                <>
+                  <p class="pr-2">{session.user?.name} |</p>
+                </>
+              </>
+              <SignOut>
+                <a
+                  class="button-white w-button bg-white font-bold transition-all"
+                  style="color: #121212; border-radius: 40px; padding: 13px 16px; font-size: 14px; line-height: 24px;"
+                  href="/"
+                  id="signin-button"
+                >
+                  Cerrar sesión
+                </a>
+              </SignOut>
             </>
           ) : (
             <>
@@ -68,11 +82,16 @@ const session = await getSession(Astro.request);
 </div>
 
 <script>
-  const { signIn } = await import("auth-astro/client");
+  const { signIn, signOut } = await import("auth-astro/client");
 
   const $button = document.querySelector("#signin-button");
   $button?.addEventListener("click", async (event) => {
     event.preventDefault();
     await signIn("twitch");
+  });
+  const $button2 = document.querySelector("#signout-button");
+  $button2?.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await signOut();
   });
 </script>

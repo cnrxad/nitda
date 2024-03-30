@@ -3,9 +3,11 @@ import tailwind from "@astrojs/tailwind";
 import auth from "auth-astro";
 import vercel from "@astrojs/vercel/serverless";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), auth()],
   output: "server",
-  adapter: vercel(),
+  adapter: netlify()
 });
