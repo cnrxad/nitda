@@ -5,7 +5,7 @@ import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
 ---
 
-<div class="safety-menu">
+<div class="safety-menu bg-blue-300">
   <div class="min-w-[100%] bg-[rgba(221,221,221,0)] z-[1000] relative">
     <div
       class="container-1180px flex justify-between max-w-[1180px] min-[80px] ml-auto mr-auto"
@@ -15,33 +15,43 @@ const session = await getSession(Astro.request);
         href="/"
         class="w-nav-brand float-left relative"
         style="text-decoration: none;"
-        ><img
-          class="opacity-100 block border-none pt-0 h-[80px]"
-          src="w-nav-logo.png"
-          alt="brand-logo"
-        /></a
+        ><div class="relative group">
+          <img src="w-nav-logo.png" alt="Descripción" class="h-[80px]" />
+          <div
+            class="absolute hidden group-hover:block bg-white text-black p-2 translate-y-20 w-[80px]"
+          >
+            <ul>
+              <li><a href="#" class="hover:text-blue-500">Lorem1</a></li>
+              <li><a href="#" class="hover:text-blue-500">Lorem2</a></li>
+              <li><a href="#" class="hover:text-blue-500">Lorem3</a></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <nav
+        role="navigation"
+        class="mr-[11px] float-right relative block pl-52 pr-48"
       >
-      <nav role="navigation" class="mr-[11px] float-right relative block">
         <div class="div-block-4" style="text-decoration: none;">
           <a
-            class="ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
+            class="navbar-l ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
             href="/">Lorem</a
           >
           <a
-            class="ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
+            class="navbar-l ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
             href="/">Lorem1</a
           >
           <a
-            class="ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
+            class="navbar-l ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
             href="/">Lorem2</a
           >
           <a
-            class="ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
+            class="navbar-l ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-left inline-block relative"
             href="/">Lorem3</a
           >
         </div>
       </nav>
-      <div class="nav-button-wrap justify-end min-w-[116px] flex">
+      <div class="nav-button-wrap justify-center min-w-[116px] flex">
         {
           session ? (
             <>
@@ -71,6 +81,7 @@ const session = await getSession(Astro.request);
                   id="signin-button"
                 >
                   Acceder
+                  <i class="fa-brands fa-twitch pl-1" style="color: #6441a5;" />
                 </a>
               </SignIn>
             </>
@@ -79,19 +90,26 @@ const session = await getSession(Astro.request);
       </div>
     </div>
   </div>
+
+  <style>
+    .navbar-l:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    const { signIn, signOut } = await import("auth-astro/client");
+
+    const $button = document.querySelector("#signin-button");
+    $button?.addEventListener("click", async (event) => {
+      event.preventDefault();
+      await signIn("twitch");
+    });
+    const $button2 = document.querySelector("#signout-button");
+    $button2?.addEventListener("click", async (event) => {
+      event.preventDefault();
+      await signOut();
+    });
+  </script>
 </div>
-
-<script>
-  const { signIn, signOut } = await import("auth-astro/client");
-
-  const $button = document.querySelector("#signin-button");
-  $button?.addEventListener("click", async (event) => {
-    event.preventDefault();
-    await signIn("twitch");
-  });
-  const $button2 = document.querySelector("#signout-button");
-  $button2?.addEventListener("click", async (event) => {
-    event.preventDefault();
-    await signOut();
-  });
-</script>
