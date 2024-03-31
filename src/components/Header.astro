@@ -1,5 +1,5 @@
 ---
-import { Auth, SignIn, SignOut } from "auth-astro/components";
+import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 
 const session = await getSession(Astro.request);
@@ -10,8 +10,7 @@ const session = await getSession(Astro.request);
     <div
       class="container-1180px flex justify-between max-w-[1180px] min-[80px] ml-auto mr-auto"
       style="align-items: center;"
-    >
-      <a
+    >   <a
         href="/"
         class="w-nav-brand float-left relative"
         style="text-decoration: none;"
