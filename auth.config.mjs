@@ -4,8 +4,10 @@ import { defineConfig } from "auth-astro";
 export default defineConfig({
     providers: [
         Twitch({
-            clientId:import.meta.env.TWITCH_CLIENT_ID,
-            clientSecret:import.meta.env.TWITCH_CLIENT_SECRET
+            clientId: import.meta.env.TWITCH_CLIENT_ID,
+            clientSecret: import.meta.env.TWITCH_CLIENT_SECRET,
+            secret: process.env.NEXT_PUBLIC_SECRET
         }),
+
     ],
 })
