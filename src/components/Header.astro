@@ -5,12 +5,13 @@ import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
 ---
 
-<div class="safety-menu bg-blue-300">
+<div class="safety-menu bg-blue bg-white dark:bg-[#191919]">
   <div class="min-w-[100%] bg-[rgba(221,221,221,0)] z-[1000] relative">
     <div
       class="container-1180px flex justify-between max-w-[1180px] min-[80px] ml-auto mr-auto"
       style="align-items: center;"
-    >   <a
+    >
+      <a
         href="/"
         class="w-nav-brand float-left relative"
         style="text-decoration: none;"
@@ -31,7 +32,10 @@ const session = await getSession(Astro.request);
         role="navigation"
         class="mr-[11px] float-right relative block pl-52 pr-48"
       >
-        <div class="div-block-4" style="text-decoration: none;">
+        <div
+          class="div-block-4 dark:text-slate-100 text-[#191919]"
+          style="text-decoration: none;"
+        >
           <a
             class="navbar-l ml-[10px] mr-[10px] p-[10px] font-semibold transition-all align-top text-center inline-block relative"
             href="/">Lorem</a

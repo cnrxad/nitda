@@ -9,7 +9,7 @@ import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html class="dark" lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -18,9 +18,12 @@ import Header from "../components/Header.astro";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <!-- importaciones -->
-    <script is:inline src="https://kit.fontawesome.com/109ca35d7d.js" crossorigin="anonymous"></script>
+    <script
+      is:inline
+      src="https://kit.fontawesome.com/109ca35d7d.js"
+      crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body class="bg-slate-100 dark:bg-[#191919]">
     <Header />
     <slot />
   </body>
@@ -28,7 +31,6 @@ import Header from "../components/Header.astro";
 <style is:global>
   html {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #191919;
     color: #fff;
     box-sizing: border-box;
   }
